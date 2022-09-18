@@ -12,7 +12,7 @@ QEMU_FLAGS  += -machine raspi4
 endif
 
 COPS += -g -Wall -nostdlib -nostdinc -Iinclude
-ASMOPS = -g -Iinclude 
+ASMOPS = -g -Iinclude
 
 BUILD_DIR = build
 SRC_DIR = src
@@ -20,7 +20,7 @@ SRC_DIR = src
 all : benos.bin
 
 clean :
-	rm -rf $(BUILD_DIR) *.bin 
+	rm -rf $(BUILD_DIR) *.bin *.elf
 
 $(BUILD_DIR)/%_c.o: $(SRC_DIR)/%.c
 	mkdir -p $(@D)
@@ -38,12 +38,13 @@ DEP_FILES = $(OBJ_FILES:%.o=%.d)
 -include $(DEP_FILES)
 
 benos.bin: $(SRC_DIR)/linker.ld $(OBJ_FILES)
-	$(ARMGNU)-ld -T $(SRC_DIR)/linker.ld -o $(BUILD_DIR)/benos.elf  $(OBJ_FILES) -e _start
+	$(ARMGNU)-ld -T $(SRC_DIR)/linker.ld -o $(BUILD_DIR)/benos.elf  $(OBJ_FILES)
 	$(ARMGNU)-objcopy $(BUILD_DIR)/benos.elf -O binary benos.bin
+	cp $(BUILD_DIR)/benos.elf benos.elf
 
 QEMU_FLAGS  += -nographic
 
 run:
 	qemu-system-aarch64 $(QEMU_FLAGS) -kernel benos.bin
 debug:
-	qemu-system-aarch64 $(QEMU_FLAGS) -kernel build/benos.elf -S -s
+	qemu-system-aarch64 $(QEMU_FLAGS) -kernel benos.bin -S -s
