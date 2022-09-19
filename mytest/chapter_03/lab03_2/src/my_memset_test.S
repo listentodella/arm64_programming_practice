@@ -24,7 +24,13 @@ loop1:
     ret
 
 my_memset2:
-    str x1, [x0]
+    mov x4, #0
+loop2:
+    strb w1, [x0], #1
+    add x4, x4, #1
+    cmp x4, x2
+    bne loop2
+
     ret
 
 __memset_16bytes:

@@ -99,9 +99,8 @@ void my_memset_test()
      * 0x6666 6666 6666 6666 0xFFFF FFFF FFFF FFFF
      * ...
     */
-    // for (int i = 0; i < 8; i++) {
-    //     my_memset2(&buffer[i], 0x66, 1);
-    // }
+        // 不应该用for循环切换地址,那样的话这里的memset失去通用性
+        my_memset2(buffer, 0x66, 8);
 
 
     /* 从上面的实验可以看出,
