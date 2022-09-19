@@ -56,6 +56,7 @@ ldr_cmd_test:
     // 这个方式, 是立即数, 相当于 mov x7, 0x20
     ldr x7, =MY_LABEL//ldr 伪指令, 编译器会去将它翻译为ARM指令
 
+    // 拷贝32字节
 my_memcpy:
     mov x0, 0x80000
     mov x1, 0x200000
