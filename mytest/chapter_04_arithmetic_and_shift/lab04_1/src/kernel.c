@@ -25,6 +25,7 @@ void sub_cmd_test()
     sub_imm_test();
     sub_reg_test();
     sub_shift_test();
+    subs_test();
 }
 
 
