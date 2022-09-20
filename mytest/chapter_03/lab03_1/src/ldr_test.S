@@ -10,6 +10,11 @@ my_data:
     .word 0x44
 
 .align 3
+.global my_data2
+my_data2:
+    .quad 0x8A
+
+.align 3
 .global access_label_test
 access_label_test:
     /* 1. 加载一个很大的数 */
@@ -31,5 +36,13 @@ access_label_test:
     /* 5. 访问一个 data */
     ldr x0, my_data
     ldr x1, =my_data
+
+    /* 6.ldr 变种, 注意其补位 */
+    mov x1, #0
+    mov x2, #0
+    ldr x5, =my_data2
+    //ldrb x1, [x5], 无法编译通过, 但理论上不影响结果
+    ldrb w1, [x5]
+    ldrsb x2, [x5]
 
     ret
