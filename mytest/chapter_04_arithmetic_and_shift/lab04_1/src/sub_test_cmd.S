@@ -2,6 +2,7 @@
 .global sub_reg_test
 .global sub_shift_test
 .global subs_test
+.global sbc_test
 
 
 sub_imm_test:
@@ -146,6 +147,34 @@ subs_test:
     mrs x3, nzcv
     //x0 = x1 - x2
     subs x0, x2, x1
+    mrs x3, nzcv
+
+    ret
+
+/*
+ * sbc 不能影响 NZCV!
+ * 它的计算公式是: op1 + NOT(op2) + C, NOT是指对其按位取反
+ */
+sbc_test:
+    mov x0, #0
+    mov x1, #3
+    mov x2, #1
+    msr nzcv, x0
+    mrs x3, nzcv
+    // 此时 NZCV 被清零, 因此公式中的 C = 0
+    //并且回读 NZCV 也可以看出, sbc 无法影响NZCV
+    sbc x0, x1, x2
+    mrs x3, nzcv
+
+    // sbcs 可以影响 NZCV, 但是当它计算时,也是取当前的NZCV
+    // 计算完成后才可以影响 NCZV
+    sbcs x0, x1, x2
+    mrs x3, nzcv
+    // 这次计算就可以拿到上次刷新的NZCV了
+
+    sbc x0, x1, x2
+    mrs x3, nzcv
+    sbcs x0, x1, x2
     mrs x3, nzcv
 
     ret

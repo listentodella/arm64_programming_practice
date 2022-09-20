@@ -9,6 +9,8 @@ extern void adc_test();
 extern void sub_imm_test();
 extern void sub_reg_test();
 extern void sub_shift_test();
+extern void subs_test();
+extern void sbc_test();
 
 void add_cmd_test()
 {
@@ -26,6 +28,7 @@ void sub_cmd_test()
     sub_reg_test();
     sub_shift_test();
     subs_test();
+    sbc_test();
 }
 
 
