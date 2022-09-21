@@ -12,9 +12,10 @@ extern void sub_shift_test();
 extern void subs_test();
 extern void sbc_test();
 
-
 extern void cmp_imm_test();
 extern void cmp_b_test();
+
+extern void shift_cmd_test();
 
 void add_cmd_test()
 {
@@ -53,6 +54,8 @@ void kernel_main(void)
     sub_cmd_test();
 
     cmp_cmd_test();
+
+    shift_cmd_test();
 
 
 	while (1) {
