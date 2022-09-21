@@ -17,6 +17,9 @@ extern void cmp_b_test();
 
 extern void shift_cmd_test();
 
+extern void bit_cmd_test();
+extern void bit_field_test();
+
 void add_cmd_test()
 {
     add_imm_test();
@@ -43,6 +46,13 @@ void cmp_cmd_test()
     cmp_b_test();
 }
 
+void bits_cmd_test()
+{
+    bit_cmd_test();
+
+    bit_field_test();
+}
+
 
 void kernel_main(void)
 {
@@ -56,6 +66,8 @@ void kernel_main(void)
     cmp_cmd_test();
 
     shift_cmd_test();
+
+    bits_cmd_test();
 
 
 	while (1) {
