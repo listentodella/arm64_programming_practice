@@ -1,6 +1,7 @@
 .global cmn_cmd_test
 .global csel_cmd_test
 .global cset_cmd_test
+.global csinc_cmd_test
 
 cmn_cmd_test:
     mov x1, 2
@@ -40,4 +41,13 @@ cset_cmd_test:
     //hi, unsigned >
     cset x0, hi
 
+    ret
+
+/* csinc op1, op2, op3, cond
+ * if cond == true, op1 = op2; else op1 = op3+1
+ */
+csinc_cmd_test:
+    cmp x0, x1
+    // if x0 > x1, return x0;else return x1+1
+    csinc x0, x0, x1, hi
     ret
