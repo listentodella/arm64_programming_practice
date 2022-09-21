@@ -1,6 +1,7 @@
 #include "uart.h"
 
 extern unsigned long compare_and_return_asm();
+extern void bit_fields_test();
 
 unsigned long compare_and_return(unsigned long a, unsigned long b)
 {
@@ -21,6 +22,8 @@ void kernel_main(void)
 
     compare_and_return(7ull, 6ull);
     compare_and_return_asm(7ull, 6ull);
+
+    bit_fields_test();
 
 
 	while (1) {
