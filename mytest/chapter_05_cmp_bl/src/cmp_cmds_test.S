@@ -1,5 +1,6 @@
 .global cmn_cmd_test
 .global csel_cmd_test
+.global cset_cmd_test
 
 cmn_cmd_test:
     mov x1, 2
@@ -21,10 +22,22 @@ csel_cmd_test:
             return b-1
      */
     //csel op1, op2, op3, <cond>
+    // if cond == true, op1 = op2;else op1 = op3
     cmp x0, x1
     add x2, x1, #2
     sub x3, x1, #1
     //ge: unsigned >=
     csel x0, x2, x3, ge
+
+    ret
+
+/* cset op1, cond
+ * if cond == true, op1 = 1; else op1 = 0
+ */
+cset_cmd_test:
+    cmp x0, x1
+    //if x0 > x1, return true;else return false
+    //hi, unsigned >
+    cset x0, hi
 
     ret
