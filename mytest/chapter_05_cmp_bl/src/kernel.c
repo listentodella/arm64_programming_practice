@@ -14,6 +14,8 @@ extern void b_ret_cmd_test();
 extern void b_ret_cmd_test2();
 extern void b_ret_cmd_test3();
 
+extern unsigned long csel_test_asm(unsigned long a, unsigned long b);
+
 void cmp_cmds_test()
 {
     cmn_cmd_test();
@@ -26,6 +28,27 @@ void cmp_cmds_test()
 
 }
 
+unsigned long csel_lab_test(unsigned long a, unsigned long b)
+{
+    if (a == 0) {
+        return b + 2;
+    } else {
+        return b - 1;
+    }
+}
+
+void cond_sel_test()
+{
+    csel_lab_test(0, 3);
+    csel_test_asm(0, 3);
+
+    csel_lab_test(1, 3);
+    csel_test_asm(1, 3);
+
+}
+
+
+
 void kernel_main(void)
 {
 	uart_init();
@@ -35,6 +58,8 @@ void kernel_main(void)
     // b_ret_cmd_test();
     b_ret_cmd_test2();
     b_ret_cmd_test3();
+
+    cond_sel_test();
 
 	uart_send_string("Welcome BenOS!\r\n");
 
