@@ -14,6 +14,8 @@ extern void b_ret_cmd_test();
 extern void b_ret_cmd_test2();
 extern void b_ret_cmd_test3();
 
+extern void bl_lab_test();
+
 extern unsigned long csel_test_asm(unsigned long a, unsigned long b);
 
 void cmp_cmds_test()
@@ -60,6 +62,8 @@ void kernel_main(void)
     b_ret_cmd_test3();
 
     cond_sel_test();
+
+    bl_lab_test();
 
 	uart_send_string("Welcome BenOS!\r\n");
 
