@@ -5,6 +5,7 @@
 
 
 .global cmn_lab_test
+.global cmp_lab_test
 
 cmn_cmd_test:
     mov x1, 2
@@ -65,5 +66,19 @@ loop:
     cmn x0, x1
     mrs x2, nzcv
     b.mi loop
+
+    ret
+
+cmp_lab_test:
+    mrs x2, nzcv
+    msr nzcv, xzr
+    mrs x2, nzcv
+    b start
+loop1:
+    add x0, x0, 1
+start:
+    cmp x1, x0
+    mrs x2, nzcv
+    b.ge loop1
 
     ret
