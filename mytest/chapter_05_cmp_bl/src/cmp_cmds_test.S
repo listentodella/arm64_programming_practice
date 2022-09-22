@@ -3,6 +3,9 @@
 .global cset_cmd_test
 .global csinc_cmd_test
 
+
+.global cmn_lab_test
+
 cmn_cmd_test:
     mov x1, 2
     mov x2, -2
@@ -50,4 +53,17 @@ csinc_cmd_test:
     cmp x0, x1
     // if x0 > x1, return x0;else return x1+1
     csinc x0, x0, x1, hi
+    ret
+
+
+cmn_lab_test:
+    mrs x2, nzcv
+    msr nzcv, xzr
+    mrs x2, nzcv
+loop:
+    add x1, x1, #1
+    cmn x0, x1
+    mrs x2, nzcv
+    b.mi loop
+
     ret
