@@ -7,6 +7,10 @@ SECTIONS
 	.data : { *(.data) }
 	. = ALIGN(0x8);
 	bss_begin = .;
-	.bss : { *(.bss*) } 
+	.bss : { *(.bss*) }
 	bss_end = .;
+
+	. = 0x400000,
+	init_pg_dir = .;
+	. += 4096;
 }
