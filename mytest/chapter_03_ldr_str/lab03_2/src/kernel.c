@@ -48,8 +48,11 @@ void *my_memset3(void *s, int c, unsigned int count)
      * 在非16字节对齐的情况下, 与运算得出的数字, 就是该地址与其起始地址的偏移量
      * 使用 16 - offset, 得到的就是 非16字节对齐的 头 字节数
     */
-    if (addr & (align - 1)) {
-        size = align - addr & (align - 1);
+    //if (addr & (align - 1)) {
+        //size = align - addr & (align - 1);//16 - 20004 & (16-1) =>4
+    // 对一个addr取模align,以结果是否能整除来判断其是否按照align字节数对齐
+    if (addr % align) {
+        size = align - addr % align;
         __memset_1bytes(p, c, size);
         p = p + size;
         left_bytes = count - size;
@@ -121,7 +124,7 @@ void my_memset_test()
 void kernel_main(void)
 {
 	uart_init();
-	("Welcome BenOS!\r\n");
+	uart_send_string("Welcome BenOS!\r\n");
 
     my_memset_test();
 
