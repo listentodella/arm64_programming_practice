@@ -32,11 +32,16 @@ ldr_adr_adrp_test:
     ldr x4, my_test_data
     // ldr 先获取地址、再通过地址获取内容
     ldr x5, =my_test_data
-    ldr x6, [x5]
+    //当运行地址不等于链接地址时,运行到这一句会导致跑飞
+    //ldr x6, [x5]
 
     //比较一下 ldr adrp
     // 加载位于 4MB地址 处的 init_pg_dir
     // 它们的区别在于, 运行地址和链接地址是否相同
+    // 先用 aarch64-linux-gnu-readelf -S benos.elf 得到各个段的链接地址,
+    // 再基于其信息使用以下命令加载elf,否则gdb单步调试无法使用
+    // 例如:add-symbol-file benos.elf 0x80030 -s  .text.boot 0x80000 -s .rodata 0x80758
+    // 当运行地址不等于链接地址时,它们的值会相差非常大, 由此可见, ldr伪指令 并不能替代 adrp
     adrp x7, init_pg_dir
     ldr x8, =init_pg_dir
 
