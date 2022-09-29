@@ -5,9 +5,11 @@
 void uart_send(char c)
 {
 	/* wait for transmit FIFO to have an available slot*/
+    //3b datasheet, p181 FR register
 	while (readl(U_FR_REG) & (1<<5))
 		;
 
+    //3b datasheet, p178 DR register
 	writel(c, U_DATA_REG);
 }
 
@@ -31,7 +33,23 @@ void uart_send_string(char *str)
 void uart_init(void)
 {
 	unsigned int selector;
-
+    /* 参考 bcm datasheet, 例如bcm2837->rpi3b
+     * 3b 的gpio,功能选择的寄存器共有6组, 每组32bit
+     * 每3bit对应一个gpio
+     *  FSELxx - Function Select xx
+        000 = GPIO Pin xx is an input
+        001 = GPIO Pin xx is an output
+        100 = GPIO Pin xx takes alternate function 0
+        101 = GPIO Pin xx takes alternate function 1
+        110 = GPIO Pin xx takes alternate function 2
+        111 = GPIO Pin xx takes alternate function 3
+        011 = GPIO Pin xx takes alternate function 4
+        010 = GPIO Pin xx takes alternate function 5
+     */
+    /* pl uart 为 gpio14,15, 功能寄存器隶属于 FSEL1
+     * 12~14 为 gpio14, 15~17为 gpio15
+     * uart 功能为 function0, 因此写 0b100
+    */
 	/* clean gpio14 */
 	selector = readl(GPFSEL1);
 	selector &= ~(7<<12);
@@ -44,18 +62,18 @@ void uart_init(void)
 	writel(selector, GPFSEL1);
 
 #ifdef CONFIG_BOARD_PI3B
-	writel(0, GPPUD);
+	writel(0, GPPUD);//GPIO Pin Pull-up/down Enable
 	delay(150);
-	writel((1<<14) | (1<<15), GPPUDCLK0);
+	writel((1<<14) | (1<<15), GPPUDCLK0);//GPIO Pin Pull-up/down Enable Clock 0
 	delay(150);
 	writel(0, GPPUDCLK0);
 #else
 	/*set gpio14/15 pull down state*/
 	selector = readl(GPIO_PUP_PDN_CNTRL_REG0);
 	selector |= (0x2 << 30) | (0x2 << 28);
-	writel(selector, GPIO_PUP_PDN_CNTRL_REG0);	
+	writel(selector, GPIO_PUP_PDN_CNTRL_REG0);
 #endif
-
+    //3b datasheet p117
 	/* disable UART until configuration is done */
 	writel(0, U_CR_REG);
 
