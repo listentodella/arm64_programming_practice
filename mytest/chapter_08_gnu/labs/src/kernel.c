@@ -9,7 +9,7 @@ extern void c_call_me();
 
 extern unsigned long my_kallsyms_cnt;
 extern unsigned long my_kallsyms_addr[];
-extern char* my_kallsyms_string[];
+extern char my_kallsyms_string[];
 
 unsigned long get_bigger(unsigned long a, unsigned long b)
 {
@@ -30,22 +30,41 @@ void print_func_name(unsigned long addr)
 
 found:
 
-    p = my_kallsyms_string;
+/*
+“.data”节的十六进制输出：
+  0x00080608 00088000 00000000 60088000 00000000 ........`.......
+  0x00080618 80088000 00000000 66756e63 5f610066 ........func_a.f
+  0x00080628 756e635f 62006675 6e635f63 00000000 unc_b.func_c....
+  0x00080638 03000000 00000000 0a000000 00000000 ................
+  0x00080648 0b000000 00000000 0c000000 00000000 ................
+  0x00080658 0d000000 00000000 04000000 00000000 ................
+
+*/
+
+    //p = my_kallsyms_string[i];
+    p = &my_kallsyms_string;
+
     if (i == 0) {
         string = p;
         goto done;
     }
 
-    while (*p != '\0') {
-        p--;
+    while (1) {
+        p++;
+        if (*p == '\0') {
+            i--;
+        }
+        if (i == 0) {
+            p++;
+            string = p;
+            break;
+        }
     }
-    string = p;
 
 done:
 
     uart_send_string(string);
     uart_send('\n');
-
 
 out:
     return;
