@@ -13,13 +13,6 @@ put_string:
 
 
 .section .text
-.global get_bigger
-get_bigger:
-
-
-
-
-
 
 .global get_max_asm
 get_max_asm:
