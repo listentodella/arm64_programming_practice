@@ -1,5 +1,7 @@
 #include "uart.h"
-
+extern unsigned long add_1(unsigned long a, unsigned long b);
+extern unsigned long add_2(unsigned long a, unsigned long b);
+extern void add_macro_test(unsigned long a, unsigned long b);
 extern void get_max_asm();
 extern unsigned long get_bigger_asm(unsigned long a, unsigned long b);
 extern void c_call_me();
@@ -61,9 +63,9 @@ void kernel_main(void)
     for (int i = 0; i < my_kallsyms_cnt; i++) {
         print_func_name(my_kallsyms_addr[i]);
     }
-        // print_func_name(0x800880);
-        // print_func_name(0x800860);
-        // print_func_name(0x800800);
+
+    add_macro_test(1, 1);
+    add_macro_test(2, 2);
 
 	uart_send_string("Welcome BenOS!\r\n");
 	while (1) {
