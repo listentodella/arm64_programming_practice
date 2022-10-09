@@ -9,22 +9,27 @@ extern char bss_begin[], bss_end[];
 
 void print_mem_layout()
 {
-    printk("BenOS image layout:");
-    printk("    .text.boot: 0x%08x - 0x%08x \n",
+    printk("BenOS image layout:\n");
+    printk("    .text.boot: 0x%08x - 0x%08x (%6ld B)\n",
            (unsigned long)_text_boot_start,
-           (unsigned long)_text_boot_end);
-    printk("    .text: 0x%08x - 0x%08x \n",
+           (unsigned long)_text_boot_end,
+           (unsigned long)(_text_boot_end - _text_boot_start));
+    printk("         .text: 0x%08x - 0x%08x (%6ld B)\n",
            (unsigned long)_text_start,
-           (unsigned long)_text_end);
-    printk("    .rodata: 0x%08x - 0x%08x \n",
+           (unsigned long)_text_end,
+           (unsigned long)(_text_end - _text_start));
+    printk("       .rodata: 0x%08x - 0x%08x (%6ld B)\n",
            (unsigned long)_rodata_start,
-           (unsigned long)_rodata_end);
-    printk("    .data: 0x%08x - 0x%08x \n",
+           (unsigned long)_rodata_end,
+           (unsigned long)(_rodata_end - _rodata_start));
+    printk("         .data: 0x%08x - 0x%08x (%6ld B)\n",
            (unsigned long)_data_start,
-           (unsigned long)_data_end);
-    printk("    .bss: 0x%08x - 0x%08x \n",
+           (unsigned long)_data_end,
+           (unsigned long)(_data_end - _data_start));
+    printk("          .bss: 0x%08x - 0x%08x (%6ld B)\n",
            (unsigned long)bss_begin,
-           (unsigned long)bss_end);
+           (unsigned long)bss_end,
+           (unsigned long)(bss_end - bss_begin));
 }
 
 
