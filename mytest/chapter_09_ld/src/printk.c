@@ -362,7 +362,7 @@ int printk(const char *fmt, ...)
 		g_record = log_buf + len;
 		g_record_len += len;
 
-		return 0;
+		//return 0;
 	}
 
 	for (i = 0; i < len; i++) {
