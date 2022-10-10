@@ -60,6 +60,23 @@ int add(int i, int j)
     return ret;
 }
 
+
+static int test_asm_goto(int a)
+{
+    asm goto (
+        "cmp %w0, 1\n"
+        "b.eq %l[test_label]\n"//注意是l不是1
+        ://goto时输出部分必须为空
+        : "r"(a)
+        : "memory"
+        : test_label
+    );
+
+    return 0;
+test_label:
+    return 1;
+}
+
 void kernel_main(void)
 {
 	uart_init();
@@ -74,6 +91,8 @@ void kernel_main(void)
     my_atomic_addQ(val0, p);
 
     add(val0, val1);
+
+    test_asm_goto(1);
 
 
 	while (1) {
