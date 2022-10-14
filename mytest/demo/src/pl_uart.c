@@ -82,3 +82,11 @@ void uart_init(void)
 	/* enable UART, receive and transmit */
 	writel(1 | (1<<8) | (1<<9), U_CR_REG);
 }
+
+void putchar(char c)
+{
+	if (c == '\n')
+		uart_send('\r');
+	uart_send(c);
+}
+
