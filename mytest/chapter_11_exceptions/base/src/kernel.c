@@ -1,4 +1,5 @@
 #include "uart.h"
+#include "sysregs.h"
 
 /*
  * 带参数的宏, # 符号会作为一个预处理运算符, 把记号转换成字符串
@@ -23,6 +24,10 @@
     ); \
 })
 
+extern void trigger_alignment(void);
+
+
+
 static const char * bad_mode_handler[] = {
     "Sync Abort",
     "IRQ",
@@ -42,15 +47,20 @@ static void test_sysregs(void)
     printk("CurrentEL = %d\n", el >> 2);
 }
 
+void get_current_el(void)
+{
+    unsigned long el = read_sysreg(CurrentEL);
+    printk("CurrentEL = %d\n", el >> 2);
+}
 
 
 void kernel_main(void)
 {
-	uart_init();
-	uart_send_string("Welcome BenOS!\r\n");
+	//uart_init();
 
-    test_sysregs();
+    trigger_alignment();
 
+    uart_send_string("Welcome BenOS!\r\n");
 	while (1) {
 		uart_send(uart_recv());
 	}
