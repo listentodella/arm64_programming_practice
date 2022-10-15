@@ -1,20 +1,26 @@
 ARMGNU ?= aarch64-linux-gnu
 
-board ?= rpi4
+#board ?= rpi4
+board ?= rpi3
 
 ifeq ($(board), rpi3)
 COPS += -DCONFIG_BOARD_PI3B
+$(info "this is rpi3")
 QEMU_FLAGS  += -machine raspi3
 else ifeq ($(board), rpi4)
+$(info "this is rpi4")
 COPS += -DCONFIG_BOARD_PI4B
 QEMU_FLAGS  += -machine raspi4
 endif
 
 COPS += -g -Wall -nostdlib -Iinclude -mgeneral-regs-only
+#COPS += -g -Wall -nostdlib -Iinclude -mgeneral-regs-only
 ASMOPS = -g -Iinclude 
 
 BUILD_DIR = build
 SRC_DIR = src
+
+$(info $(COPS))
 
 all : benos.bin
 
@@ -26,7 +32,7 @@ $(BUILD_DIR)/%_c.o: $(SRC_DIR)/%.c
 	$(ARMGNU)-gcc $(COPS) -MMD -c $< -o $@
 
 $(BUILD_DIR)/%_s.o: $(SRC_DIR)/%.S
-	$(ARMGNU)-gcc $(ASMOPS) -MMD -c $< -o $@
+	$(ARMGNU)-gcc $(COPS) $(ASMOPS) -MMD -c $< -o $@
 
 C_FILES = $(wildcard $(SRC_DIR)/*.c)
 ASM_FILES = $(wildcard $(SRC_DIR)/*.S)

@@ -1,0 +1,174 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ARMGNU	Makefile	/^ARMGNU ?= aarch64-linux-gnu$/;"	m
+ASMOPS	Makefile	/^ASMOPS = -g -Iinclude $/;"	m
+ASM_FILES	Makefile	/^ASM_FILES = $(wildcard $(SRC_DIR)\/*.S)$/;"	m
+BAD_ERROR	src/entry.S	/^#define BAD_ERROR       3$/;"	d
+BAD_FIQ	src/entry.S	/^#define BAD_FIQ         2$/;"	d
+BAD_IRQ	src/entry.S	/^#define BAD_IRQ         1$/;"	d
+BAD_SYNC	src/entry.S	/^#define BAD_SYNC        0$/;"	d
+BUILD_DIR	Makefile	/^BUILD_DIR = build$/;"	m
+CONFIG_LOG_BUF_SHIFT	src/printk.c	9;"	d	file:
+CONSOLE_PRINT_BUFFER_SIZE	src/printk.c	5;"	d	file:
+C_FILES	Makefile	/^C_FILES = $(wildcard $(SRC_DIR)\/*.c)$/;"	m
+CurrentEL_EL1	include/sysregs.h	17;"	d
+CurrentEL_EL2	include/sysregs.h	18;"	d
+CurrentEL_EL3	include/sysregs.h	19;"	d
+DEP_FILES	Makefile	/^DEP_FILES = $(OBJ_FILES:%.o=%.d)$/;"	m
+GPCLR0	include/asm/gpio.h	8;"	d
+GPFSEL1	include/asm/gpio.h	6;"	d
+GPIO_PUP_PDN_CNTRL_REG0	include/asm/gpio.h	11;"	d
+GPPUD	include/asm/gpio.h	9;"	d
+GPPUDCLK0	include/asm/gpio.h	10;"	d
+GPSET0	include/asm/gpio.h	7;"	d
+HCR_HOST_NVHE_FLAGS	include/sysregs.h	4;"	d
+HCR_RW	include/sysregs.h	2;"	d
+LEFT	src/printk.c	26;"	d	file:
+LOG_BUF_LEN	src/printk.c	10;"	d	file:
+LOW_MEMORY	include/mm.h	11;"	d
+MY_LABEL	src/asm_test.S	/^#define MY_LABEL 0x20$/;"	d
+MY_OPS	src/kernel.c	161;"	d	file:
+Note	src/entry.S	/^	   Note: 我们暂时只实现IRQ中断$/;"	l
+OBJ_FILES	Makefile	/^OBJ_FILES = $(C_FILES:$(SRC_DIR)\/%.c=$(BUILD_DIR)\/%_c.o)$/;"	m
+PAGE_SHIFT	include/mm.h	4;"	d
+PAGE_SIZE	include/mm.h	8;"	d
+PBASE	include/asm/base.h	5;"	d
+PBASE	include/asm/base.h	7;"	d
+PLUS	src/printk.c	24;"	d	file:
+PRINTK_STATUS_DOWN	src/printk.c	/^	PRINTK_STATUS_DOWN,$/;"	e	enum:printk_status	file:
+PRINTK_STATUS_READY	src/printk.c	/^	PRINTK_STATUS_READY,$/;"	e	enum:printk_status	file:
+SCTLR_EE_LITTLE_ENDIAN	include/sysregs.h	6;"	d
+SCTLR_EOE_LITTLE_ENDIAN	include/sysregs.h	7;"	d
+SCTLR_MMU_DISABLED	include/sysregs.h	8;"	d
+SCTLR_VALUE_MMU_DISABLED	include/sysregs.h	9;"	d
+SECTION_SHIFT	include/mm.h	6;"	d
+SECTION_SIZE	include/mm.h	9;"	d
+SIGN	src/printk.c	23;"	d	file:
+SMALL	src/printk.c	28;"	d	file:
+SPACE	src/printk.c	25;"	d	file:
+SPECIAL	src/printk.c	27;"	d	file:
+SPSR_EL1	include/sysregs.h	14;"	d
+SPSR_EL1h	include/sysregs.h	12;"	d
+SPSR_EL2	include/sysregs.h	15;"	d
+SPSR_EL2h	include/sysregs.h	13;"	d
+SPSR_MASK_ALL	include/sysregs.h	11;"	d
+SRC_DIR	Makefile	/^SRC_DIR = src$/;"	m
+TABLE_SHIFT	include/mm.h	5;"	d
+U_BASE	include/asm/pl_uart.h	6;"	d
+U_CR_REG	include/asm/pl_uart.h	13;"	d
+U_DATA_REG	include/asm/pl_uart.h	8;"	d
+U_FBRD_REG	include/asm/pl_uart.h	11;"	d
+U_FR_REG	include/asm/pl_uart.h	9;"	d
+U_IBRD_REG	include/asm/pl_uart.h	10;"	d
+U_IMSC_REG	include/asm/pl_uart.h	14;"	d
+U_LCRH_REG	include/asm/pl_uart.h	12;"	d
+ZEROPAD	src/printk.c	22;"	d	file:
+_MINI_UART_H	include/uart.h	2;"	d
+_MM_H	include/mm.h	2;"	d
+_P_BASE_H	include/asm/base.h	2;"	d
+_P_BASE_H	include/io.h	3;"	d
+_P_GPIO_H	include/asm/gpio.h	2;"	d
+_P_UART_H	include/asm/pl_uart.h	2;"	d
+__arch_getl	include/io.h	6;"	d
+__arch_putl	include/io.h	7;"	d
+__init_uart	src/early_uart.S	/^__init_uart:$/;"	l
+__iormb	include/io.h	10;"	d
+__iowmb	include/io.h	11;"	d
+__memset	src/memset.c	/^static void *__memset(char *s, int c, size_t count)$/;"	f	file:
+__memset_16bytes	src/memset_asm.S	/^__memset_16bytes:$/;"	l
+__memset_16bytes_asm	src/memset.c	/^static void __memset_16bytes_asm(void *p, unsigned long data,$/;"	f	file:
+__memset_1bytes	src/memset.c	/^static void *__memset_1bytes(void *s, int c, size_t count)$/;"	f	file:
+_start	src/boot.S	/^_start:$/;"	l
+access_label_test	src/asm_test.S	/^access_label_test:$/;"	l
+add_1	src/asm_test.S	/^add_1:$/;"	l
+add_2	src/asm_test.S	/^add_2:$/;"	l
+add_inst_test	src/asm_test.S	/^add_inst_test:$/;"	l
+adrp_test	src/asm_test.S	/^adrp_test:$/;"	l
+ands_test	src/asm_test.S	/^ands_test:$/;"	l
+atomic_set	src/atomic.S	/^atomic_set:$/;"	l
+bad_mode	src/kernel.c	/^void bad_mode(struct pt_regs *regs, int reason, unsigned int esr)$/;"	f
+bad_mode_handler	src/kernel.c	/^static const char * const bad_mode_handler[] = {$/;"	v	file:
+bitfield_test	src/asm_test.S	/^bitfield_test:$/;"	l
+bl_test	src/asm_test.S	/^bl_test:$/;"	l
+board	Makefile	/^board ?= rpi3$/;"	m
+cmp_cmn_test	src/asm_test.S	/^cmp_cmn_test:$/;"	l
+compare_and_return	src/asm_test.S	/^compare_and_return:$/;"	l
+csel_test	src/asm_test.S	/^csel_test:$/;"	l
+delay	include/io.h	/^static inline void delay(unsigned int n)$/;"	f
+dmb	include/io.h	9;"	d
+do_div	src/printk.c	32;"	d	file:
+el0_error_invalid	src/entry.S	/^el0_error_invalid:$/;"	l
+el0_fiq_invalid	src/entry.S	/^el0_fiq_invalid:$/;"	l
+el0_irq_invalid	src/entry.S	/^el0_irq_invalid:$/;"	l
+el0_sync_invalid	src/entry.S	/^el0_sync_invalid:$/;"	l
+el1_entry	src/boot.S	/^el1_entry:$/;"	l
+el1_error_invalid	src/entry.S	/^el1_error_invalid:$/;"	l
+el1_fiq_invalid	src/entry.S	/^el1_fiq_invalid:$/;"	l
+el1_irq_invalid	src/entry.S	/^el1_irq_invalid:$/;"	l
+el1_sync_invalid	src/entry.S	/^el1_sync_invalid:$/;"	l
+el2_entry	src/boot.S	/^el2_entry:$/;"	l
+el3_entry	src/boot.S	/^el3_entry:$/;"	l
+el_string1	src/boot.S	/^el_string1:$/;"	l
+func_addr	src/asm_test.S	/^func_addr:$/;"	l
+func_num_syms	src/asm_test.S	/^func_num_syms:$/;"	l
+func_string	src/asm_test.S	/^func_string:$/;"	l
+g_printk_status	src/printk.c	/^static enum printk_status g_printk_status = PRINTK_STATUS_DOWN;$/;"	v	typeref:enum:printk_status	file:
+g_record	src/printk.c	/^static char *g_record = log_buf;$/;"	v	file:
+g_record_len	src/printk.c	/^static unsigned long g_record_len;$/;"	v	file:
+init_printk_done	src/printk.c	/^void init_printk_done(void)$/;"	f
+is_digit	src/printk.c	30;"	d	file:
+kernel_main	src/kernel.c	/^void kernel_main(void)$/;"	f
+ldr_test	src/asm_test.S	/^ldr_test:$/;"	l
+log_buf	src/printk.c	/^static char log_buf[LOG_BUF_LEN];$/;"	v	file:
+macro_test_1	src/asm_test.S	/^macro_test_1:$/;"	l
+macro_test_2	src/asm_test.S	/^macro_test_2:$/;"	l
+master	src/boot.S	/^master:$/;"	l
+memcpy	src/string.c	/^void *memcpy(void *dest, const void *src, size_t count)$/;"	f
+memset	src/memset.c	/^void *memset(void *s, int c, size_t count)$/;"	f
+memzero	src/mm.S	/^memzero:$/;"	l
+my_atomic_data	src/atomic.S	/^my_atomic_data:$/;"	l
+my_atomic_write	src/atomic.S	/^my_atomic_write:$/;"	l
+my_data	src/asm_test.S	/^my_data:$/;"	l
+my_data_process_inst	src/kernel.c	/^void my_data_process_inst(void)$/;"	f
+my_label	src/asm_test.S	/^#define my_label 0x30$/;"	d
+my_ldr_str_test	src/kernel.c	/^void my_ldr_str_test(void)$/;"	f
+my_memcpy_asm_test	src/kernel.c	/^static void my_memcpy_asm_test(unsigned long src, unsigned long dst,$/;"	f	file:
+my_memcpy_test	src/asm_test.S	/^my_memcpy_test:$/;"	l
+my_ops_test	src/kernel.c	/^static void my_ops_test(void)$/;"	f	file:
+my_test_data	src/asm_test.S	/^my_test_data:$/;"	l
+myprintf	src/printk.c	/^int myprintf(char *string, unsigned int size,$/;"	f
+number	src/printk.c	/^static char *number(char *str, unsigned long num, int base, int size, int precision$/;"	f	file:
+print_buf	src/printk.c	/^static char print_buf[CONSOLE_PRINT_BUFFER_SIZE];$/;"	v	file:
+print_el	src/boot.S	/^print_el:$/;"	l
+print_func_name	src/kernel.c	/^static int print_func_name(unsigned long addr)$/;"	f	file:
+print_mem	src/kernel.c	/^static void print_mem(void)$/;"	f	file:
+printk	src/printk.c	/^int printk(const char *fmt, ...)$/;"	f
+printk_status	src/printk.c	/^enum printk_status {$/;"	g	file:
+proc_hang	src/boot.S	/^proc_hang: $/;"	l
+put_string_uart	src/early_uart.S	/^put_string_uart:$/;"	l
+put_uart	src/early_uart.S	/^put_uart:$/;"	l
+putchar	src/pl_uart.c	/^void putchar(char c)$/;"	f
+read_sysreg	src/kernel.c	203;"	d	file:
+readl	include/io.h	/^static inline unsigned int readl(unsigned int addr)$/;"	f
+readl	include/io.h	13;"	d
+scan_number	src/printk.c	/^static const char *scan_number(const char *string, int *number)$/;"	f	file:
+size_t	src/memset.c	/^typedef unsigned int size_t;$/;"	t	file:
+size_t	src/string.c	/^typedef unsigned int size_t;$/;"	t	file:
+string1	src/asm_test.S	/^string1:$/;"	l
+string_test	src/entry.S	/^string_test:$/;"	l
+strlen	src/string.c	/^size_t strlen(const char *s)$/;"	f
+test_asm_goto	src/kernel.c	/^static int test_asm_goto(int a)$/;"	f	file:
+test_sysregs	src/kernel.c	/^static void test_sysregs(void)$/;"	f	file:
+trigger_alignment	src/entry.S	/^trigger_alignment:$/;"	l
+uart_init	src/pl_uart.c	/^void uart_init(void)$/;"	f
+uart_recv	src/pl_uart.c	/^char uart_recv(void)$/;"	f
+uart_send	src/pl_uart.c	/^void uart_send(char c)$/;"	f
+uart_send_string	src/pl_uart.c	/^void uart_send_string(char *str)$/;"	f
+vectors	src/entry.S	/^vectors:$/;"	l
+write_sysreg	src/kernel.c	210;"	d	file:
+writel	include/io.h	/^static inline void writel(unsigned int value, unsigned int addr)$/;"	f
+writel	include/io.h	14;"	d
