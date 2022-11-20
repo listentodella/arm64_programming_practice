@@ -5,14 +5,14 @@ board ?= rpi3
 
 ifeq ($(board), rpi3)
 COPS += -DCONFIG_BOARD_PI3B
-QEMU_FLAGS  += -machine raspi3
+QEMU_FLAGS  += -machine raspi3b
 else ifeq ($(board), rpi4)
 COPS += -DCONFIG_BOARD_PI4B
 QEMU_FLAGS  += -machine raspi4
 endif
 
 COPS += -g -Wall -nostdlib -Iinclude -mgeneral-regs-only
-ASMOPS = -g -Iinclude 
+ASMOPS = -g -Iinclude
 
 BUILD_DIR = build
 SRC_DIR = src
@@ -20,7 +20,7 @@ SRC_DIR = src
 all : benos.bin
 
 clean :
-	rm -rf $(BUILD_DIR) *.bin *.elf *.map 
+	rm -rf $(BUILD_DIR) *.bin *.elf *.map
 
 $(BUILD_DIR)/%_c.o: $(SRC_DIR)/%.c
 	mkdir -p $(@D)

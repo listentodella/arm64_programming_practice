@@ -1,3 +1,5 @@
+TEXT_ROM = 0x90000;
+
 SECTIONS
 {
 	. = 0x80000,
@@ -6,12 +8,18 @@ SECTIONS
         *(.text.boot);
         _text_boot_end = .;
     }
-	.text : {
+	.text : AT(TEXT_ROM) {
         _text_start = .;
         *(.text);
         _text_end = .;
     }
-	.rodata : {
+
+	/* .rodata : { */
+	/* 注意 这里, 如果没有下面的表述, map文件里可以看到，
+		每个段都将有一个加载地址, 这会影响到后续运行(不仅仅是代码段需要copy了)
+		ADDR(section) 则可以返回段的虚拟地址，这样从此开始的段，会继续从虚拟地址开始算起
+	*/
+	.rodata : AT(ADDR(.rodata)) {
         _rodata_start = .;
         *(.rodata);
         _rodata_end = .;
